@@ -1,0 +1,37 @@
+{
+  "mainMenu": {
+    "eyebrow": "RANDOM SELECTOR",
+    "titleFirstLine": "Up next!",
+    "titleSecondLine": "Let chance decide.",
+    "subtitle": "Choose a game, add your roster, and let chance decide.",
+    "editRosterButton": "EDIT ROSTER",
+    "eligibleLabel": "eligible",
+    "unselectedLabel": "unselected",
+    "wheel": {
+      "kicker": "Classic picker",
+      "name": "Decision Wheel",
+      "action": "Spin the wheel"
+    },
+    "marbles": {
+      "kicker": "Physics race",
+      "name": "Marble Pursuit",
+      "action": "Start the race"
+    }
+  },
+  "wheelScreen": {
+    "backButton": "← Game Menu",
+    "eyebrow": "RANDOM SELECTOR",
+    "headlineStart": "Let the",
+    "headlineEmphasis": "wheel",
+    "headlineEnd": "choose",
+    "promptFirstLine": "Give it a spin.",
+    "promptSecondLine": "One random name will be selected.",
+    "spinButton": "SPIN THE WHEEL",
+    "spinningButton": "SPINNING…",
+    "eligibleSuffix": "eligible participants",
+    "winnerBanner": "THE GAME HAS SPOKEN",
+    "wheelLabel": "Random name Decision Wheel picker",
+    "dragInstruction": "Drag to spin.",
+    "dismissWinnerLabel": "Dismiss winner celebration"
+  }
+}
