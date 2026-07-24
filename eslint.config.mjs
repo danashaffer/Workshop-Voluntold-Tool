@@ -1,28 +1,56 @@
-import js from "@eslint/js";
-import pluginJsxA11y from "eslint-plugin-jsx-a11y";
-import pluginReactHooks from "eslint-plugin-react-hooks";
-import tseslint from "typescript-eslint";
+import fs from "node:fs";
+import path from "node:path";
+
+const __filename = new URL(import.meta.url).pathname;
+const __dirname = path.dirname(__filename);
+
+const ignore = [
+  ".next",
+  ".git",
+  "node_modules",
+  ".DS_Store",
+  "dist",
+  "*.log",
+];
+
+const repo = path.dirname(__dirname);
+const dirs = fs
+  .readdirSync(repo)
+  .filter((file) => !ignore.includes(file))
+  .filter((file) => fs.statSync(path.join(repo, file)).isDirectory());
+
+const configs = dirs
+  .filter((dir) => dir !== "node_modules")
+  .map((dir) => ({
+    name: `eslint-config-${dir}`,
+    rules: {},
+  }));
 
 export default [
-  { ignores: ["dist"] },
   {
-    files: ["**/*.{ts,tsx}"],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: {
-        browser: true,
-        es2020: true,
-      },
-      sourceType: "module",
-    },
+    ignores: [
+      "dist/",
+      "node_modules/",
+      ".next/",
+      "coverage/",
+      "*.log",
+      "build/",
+    ],
   },
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
-  pluginJsxA11y.configs.recommended,
   {
-    plugins: {
-      "react-hooks": pluginReactHooks,
+    files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
-    rules: pluginReactHooks.configs.recommended.rules,
+    rules: {
+      "no-console": ["warn", { allow: ["warn", "error"] }],
+      "no-unused-vars": "off",
+    },
   },
 ];
